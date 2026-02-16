@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Signup</title>
+    <th:block th:replace="fragments/style :: style"></th:block>
+</head>
+<body style="display:flex;justify-content:center;align-items:center;height:100vh;background:linear-gradient(to right,#11998e,#38ef7d);">
+
+<div class="card" style="width:400px;">
+    <h2 style="text-align:center;">Register User</h2>
+
+    <form th:action="@{/auth/signup}" method="post" th:object="${signupRequest}">
+        <input type="text" th:field="*{username}" placeholder="Username" required/>
+        <input type="email" th:field="*{email}" placeholder="Email" required/>
+        <input type="password" th:field="*{password}" placeholder="Password" required/>
+
+        <select th:field="*{role}">
+            <option value="ADMIN">ADMIN</option>
+            <option value="MANAGER">MANAGER</option>
+            <option value="STAFF">STAFF</option>
+        </select>
+
+        <button type="submit">Sign up</button>
+        <div style="margin-top:15px; text-align:center;">
+            Already have an account?
+            <a th:href="@{/auth/login}">Login</a>
+        </div>
+    </form>
+
+    <p th:text="${message}" style="text-align:center;color:green;"></p>
+</div>
+
+</body>
+</html>

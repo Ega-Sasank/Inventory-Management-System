@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Forgot Password</title>
+    <th:block th:replace="fragments/style :: style"></th:block>
+</head>
+<body style="display:flex;justify-content:center;align-items:center;height:100vh;background:linear-gradient(to right,#ff512f,#dd2476);">
+
+<div class="card" style="width:400px;">
+    <h2 style="text-align:center;">Forgot Password</h2>
+
+    <form th:action="@{/auth/forgot}" method="post">
+        <input type="email" name="email" placeholder="Enter your email" required/>
+        <button type="submit">Send Reset Link</button>
+    </form>
+
+    <p th:text="${message}" style="text-align:center;color:green;"></p>
+</div>
+
+</body>
+</html>
