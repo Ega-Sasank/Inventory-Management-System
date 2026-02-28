@@ -5,22 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2b3e6483-c1d3-4864-ae1d-578bf1ff3d8e" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/intelligent inventory management system/src/main/java/ineventory/Config/SecurityConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/intelligent inventory management system/src/main/java/ineventory/Config/SecurityConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/intelligent inventory management system/src/main/java/ineventory/Controller/AdminController.java" beforeDir="false" afterPath="$PROJECT_DIR$/intelligent inventory management system/src/main/java/ineventory/Controller/AdminController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/intelligent inventory management system/src/main/java/ineventory/Controller/AuthController.java" beforeDir="false" afterPath="$PROJECT_DIR$/intelligent inventory management system/src/main/java/ineventory/Controller/AuthController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/intelligent inventory management system/src/main/java/ineventory/Controller/ManagerController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/intelligent inventory management system/src/main/java/ineventory/Controller/StaffController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/intelligent inventory management system/src/main/java/ineventory/Dto/SignupRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/intelligent inventory management system/src/main/java/ineventory/Dto/SignupRequest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/intelligent inventory management system/src/main/java/ineventory/Entity/Role.java" beforeDir="false" afterPath="$PROJECT_DIR$/intelligent inventory management system/src/main/java/ineventory/Entity/Role.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/intelligent inventory management system/src/main/java/ineventory/Entity/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/intelligent inventory management system/src/main/java/ineventory/Entity/User.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/intelligent inventory management system/src/main/java/ineventory/Repository/UserRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/intelligent inventory management system/src/main/java/ineventory/Repository/UserRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/intelligent inventory management system/src/main/java/ineventory/Service/Impl/AuthServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/intelligent inventory management system/src/main/java/ineventory/Service/Impl/AuthServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/intelligent inventory management system/src/main/resources/templates/Admin/dashboard.html" beforeDir="false" afterPath="$PROJECT_DIR$/intelligent inventory management system/src/main/resources/templates/Admin/dashboard.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/intelligent inventory management system/src/main/resources/templates/Auth/signup.html" beforeDir="false" afterPath="$PROJECT_DIR$/intelligent inventory management system/src/main/resources/templates/Auth/signup.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/intelligent inventory management system/src/main/resources/templates/Manager/dashboard.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/intelligent inventory management system/src/main/resources/templates/Staff/dashboard.html" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
