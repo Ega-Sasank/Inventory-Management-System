@@ -4,6 +4,7 @@ import ineventory.Dto.ForgotPasswordRequest;
 import ineventory.Dto.LoginRequest;
 import ineventory.Dto.ResetPasswordRequest;
 import ineventory.Dto.SignupRequest;
+import ineventory.Entity.Role;
 import ineventory.Entity.User;
 import ineventory.Repository.UserRepository;
 import ineventory.Service.Impl.ActivityLogService;
@@ -49,10 +50,25 @@ public class AuthController {
     @PostMapping("/signup")
     public String signup(@ModelAttribute SignupRequest request,Model model){
 
-        String result=authService.registerUser(request);
-        model.addAttribute("message",result);
+//        String result=authService.registerUser(request);
+//        model.addAttribute("message",result);
+//
+//        model.addAttribute("loginRequest",new LoginRequest());
 
-        model.addAttribute("loginRequest",new LoginRequest());
+            if(request.getRole() == Role.ADMIN){
+                request.setStatus("ACTIVE");
+                model.addAttribute("message",
+                        "Admin registered successfully.");
+            }
+            else if(request.getRole() == Role.EMPLOYEE){
+                request.setStatus("PENDING");
+                model.addAttribute("message",
+                        "Employee registration submitted. Waiting for admin approval.");
+            }
+
+            authService.registerUser(request);
+
+            model.addAttribute("loginRequest", new LoginRequest());
 
         return "auth/login";
     }
@@ -84,8 +100,14 @@ public class AuthController {
         User user = userRepository
                 .findByUsername(request.getUsername())
                 .orElse(null);
+        /*if(user != null && !"ACTIVE".equals(user.getStatus())){
+            model.addAttribute("message",
+                    "Account waiting for admin approval.");
+            model.addAttribute("loginRequest", new LoginRequest());
+            return "auth/login";
+        }*/
 
-        if(user.getRole().name().equals("ADMIN")){
+        /*if(user.getRole().name().equals("ADMIN")){
             return "redirect:/admin/dashboard";
         }
         else if(user.getRole().name().equals("MANAGER")){
@@ -93,6 +115,15 @@ public class AuthController {
         }
         else {
             return "redirect:/staff/dashboard";
+        }*/
+        if(user == null){
+            return "auth/login";
+        }
+        if(user.getRole().name().equals("ADMIN")){
+            return "redirect:/admin/dashboard";
+        }
+        else {
+            return "redirect:/employee/dashboard";
         }
 
     }

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Pending Users</title>
+    <th:block th:replace="fragments/style :: style"></th:block>
+</head>
+<body>
+
+<div class="sidebar">
+    <h2>Admin Panel</h2>
+    <a href="/admin/dashboard">Dashboard</a>
+    <a href="/admin/pending-users">Pending Users</a>
+    <a href="/admin/logs">Activity Logs</a>
+    <a href="/auth/logout">Logout</a>
+</div>
+
+<div class="content">
+    <div class="card">
+        <h3>Pending Employee Registrations</h3>
+
+        <table>
+            <tr>
+                <th>ID</th>
+                <th>Username</th>
+                <th>Email</th>
+                <th>Action</th>
+            </tr>
+
+            <tr th:each="user : ${users}">
+                <td th:text="${user.id}"></td>
+                <td th:text="${user.username}"></td>
+                <td th:text="${user.email}"></td>
+                <td>
+                    <form th:action="@{/admin/approve/{id}(id=${user.id})}" method="post" style="display:inline;">
+                        <button type="submit">Approve</button>
+                    </form>
+
+                    <form th:action="@{/admin/reject/{id}(id=${user.id})}" method="post" style="display:inline;">
+                        <button type="submit" style="background:#dc2626;">Reject</button>
+                    </form>
+                </td>
+            </tr>
+
+        </table>
+    </div>
+</div>
+
+</body>
+</html>

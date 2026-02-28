@@ -37,6 +37,8 @@ public class AuthServiceImpl  {
         user.setPassword(passwordEncoder.encode(user.getPassword()));
         userRepository.save(user);
         logService.log(user.getUsername(),"User Registered");
+//        logService.log(user.getUsername(),
+//                "User Registered with role: " + user.getRole());
 
         return "signup successful";
     }
@@ -51,6 +53,11 @@ public class AuthServiceImpl  {
         }
         if(!passwordEncoder.matches(loginRequest.getPassword(),user.getPassword())){
             return "Invalid Password";
+        }
+
+        //  IMPORTANT STATUS CHECK
+        if(!"ACTIVE".equals(user.getStatus())){
+            return "Account waiting for admin approval";
         }
 
         String token=jwtUtility.generateToken(

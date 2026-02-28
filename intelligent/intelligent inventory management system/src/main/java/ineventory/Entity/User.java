@@ -31,4 +31,7 @@ public class User {
 
     private String resetToken;
 
+    @Column(nullable = false)
+    private String status;   // PENDING, ACTIVE
+
 }

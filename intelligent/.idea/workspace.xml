@@ -5,14 +5,22 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2b3e6483-c1d3-4864-ae1d-578bf1ff3d8e" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/intelligent.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/jarRepositories.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/intelligent inventory management system/src/main/java/ineventory/Config/SecurityConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/intelligent inventory management system/src/main/java/ineventory/Config/SecurityConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/intelligent inventory management system/src/main/java/ineventory/Controller/AdminController.java" beforeDir="false" afterPath="$PROJECT_DIR$/intelligent inventory management system/src/main/java/ineventory/Controller/AdminController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/intelligent inventory management system/src/main/java/ineventory/Controller/AuthController.java" beforeDir="false" afterPath="$PROJECT_DIR$/intelligent inventory management system/src/main/java/ineventory/Controller/AuthController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/intelligent inventory management system/src/main/java/ineventory/Controller/ManagerController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/intelligent inventory management system/src/main/java/ineventory/Controller/StaffController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/intelligent inventory management system/src/main/java/ineventory/Dto/SignupRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/intelligent inventory management system/src/main/java/ineventory/Dto/SignupRequest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/intelligent inventory management system/src/main/java/ineventory/Entity/Role.java" beforeDir="false" afterPath="$PROJECT_DIR$/intelligent inventory management system/src/main/java/ineventory/Entity/Role.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/intelligent inventory management system/src/main/java/ineventory/Entity/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/intelligent inventory management system/src/main/java/ineventory/Entity/User.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/intelligent inventory management system/src/main/java/ineventory/Repository/UserRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/intelligent inventory management system/src/main/java/ineventory/Repository/UserRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/intelligent inventory management system/src/main/java/ineventory/Service/Impl/AuthServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/intelligent inventory management system/src/main/java/ineventory/Service/Impl/AuthServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/intelligent inventory management system/src/main/resources/templates/Admin/dashboard.html" beforeDir="false" afterPath="$PROJECT_DIR$/intelligent inventory management system/src/main/resources/templates/Admin/dashboard.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/intelligent inventory management system/src/main/resources/templates/Auth/signup.html" beforeDir="false" afterPath="$PROJECT_DIR$/intelligent inventory management system/src/main/resources/templates/Auth/signup.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/intelligent inventory management system/src/main/resources/templates/Manager/dashboard.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/intelligent inventory management system/src/main/resources/templates/Staff/dashboard.html" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -47,20 +55,20 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "DefaultHtmlFileTemplate": "HTML File",
-    "ModuleVcsDetector.initialDetectionPerformed": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "Spring Boot.IntelligentApplication.executor": "Run",
-    "git-widget-placeholder": "main",
-    "ignore.virus.scanning.warn.message": "true",
-    "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/Users/sasank/OneDrive/Inventory Management/intelligent",
-    "settings.editor.selected.configurable": "reference.projectsettings.compiler.annotationProcessors"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;DefaultHtmlFileTemplate&quot;: &quot;HTML File&quot;,
+    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;Spring Boot.IntelligentApplication.executor&quot;: &quot;Run&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/sasank/OneDrive/Inventory Management/intelligent&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;reference.projectsettings.compiler.annotationProcessors&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\sasank\OneDrive\Inventory Management\intelligent\intelligent inventory management system" />

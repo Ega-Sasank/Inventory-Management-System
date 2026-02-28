@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Employee Dashboard</title>
+    <th:block th:replace="fragments/style :: style"></th:block>
+</head>
+<body>
+
+<div class="sidebar" style="background:#0f766e;">
+    <h2>Employee Panel</h2>
+    <a href="/employee/dashboard">Dashboard</a>
+    <a href="/auth/logout">Logout</a>
+</div>
+
+<div class="content">
+    <div class="card">
+        <h3>Welcome Employee</h3>
+        <p>You can now access your assigned system features.</p>
+    </div>
+</div>
+
+</body>
+</html>
