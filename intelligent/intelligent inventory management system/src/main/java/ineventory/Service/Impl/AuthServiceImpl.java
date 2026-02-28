@@ -36,7 +36,7 @@ public class AuthServiceImpl  {
         User user = modelMapper.map(request,User.class);
         user.setPassword(passwordEncoder.encode(user.getPassword()));
         userRepository.save(user);
-        logService.log(user.getUsername(),"User Registered");
+        logService.log(user,"User Registered");
 //        logService.log(user.getUsername(),
 //                "User Registered with role: " + user.getRole());
 
@@ -65,7 +65,7 @@ public class AuthServiceImpl  {
                 user.getRole().name()
         );
 
-        logService.log(user.getUsername(),"User Logged in");
+        logService.log(user,"User logged in");
         return token;
     }
 
@@ -83,7 +83,7 @@ public class AuthServiceImpl  {
         userRepository.save(user);
         emailService.sendResetLink(request.getEmail(),token);
 
-        logService.log(user.getUsername(),"Requested password reset");
+        logService.log(user,"Requested password reset");
 
         return "Password reset link sent";
     }
@@ -100,7 +100,7 @@ public class AuthServiceImpl  {
         user.setResetToken(null);
 
         userRepository.save(user);
-        logService.log(user.getUsername(),"Password reset successful");
+        logService.log(user,"Password reset successful");
         return "Password reset successful";
     }
 }

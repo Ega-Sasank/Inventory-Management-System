@@ -6,6 +6,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.util.List;
+
 @Entity
 @Getter
 @Setter
@@ -34,4 +36,6 @@ public class User {
     @Column(nullable = false)
     private String status;   // PENDING, ACTIVE
 
+    @OneToMany(mappedBy = "user",cascade=CascadeType.ALL)
+    private List<ActivityLog> activityLogs;
 }

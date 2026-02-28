@@ -1,9 +1,6 @@
 package ineventory.Entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.*;
 
 import java.time.LocalDateTime;
@@ -21,5 +18,8 @@ public class ActivityLog {
     private String username;
     private String action;
     private LocalDateTime timestamp = LocalDateTime.now();
+    @ManyToOne
+    @JoinColumn(name="user_id",nullable=false)
+    private User user;
 
 }

@@ -1,6 +1,7 @@
 package ineventory.Service.Impl;
 
 import ineventory.Entity.ActivityLog;
+import ineventory.Entity.User;
 import ineventory.Repository.ActivityLogRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -14,9 +15,10 @@ public class ActivityLogService {
 
     private final ActivityLogRepository repository;
 
-    public void log(String username, String action){
+    public void log(User user, String action){
         ActivityLog activityLog = new ActivityLog();
-        activityLog.setUsername(username);
+        activityLog.setUser(user);
+        activityLog.setUsername(user.getUsername());
         activityLog.setAction(action);
         activityLog.setTimestamp(LocalDateTime.now());
         repository.save(activityLog);
