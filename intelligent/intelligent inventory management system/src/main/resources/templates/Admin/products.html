@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Admin - Products</title>
+    <th:block th:replace="fragments/style :: style"></th:block>
+</head>
+<body>
+
+<div class="sidebar">
+    <h2>Admin Panel</h2>
+    <a href="/admin/dashboard">Dashboard</a>
+    <a href="/products/admin/products">Products</a>
+    <a href="/alerts/admin">Alerts</a>
+    <a href="/transactions/admin">Transactions</a>
+    <a href="/auth/logout">Logout</a>
+</div>
+
+<div class="content">
+
+    <div class="card">
+        <h3>Add Product</h3>
+
+        <form th:action="@{/products/add}" method="post" th:object="${product}">
+            <input type="text" placeholder="SKU" th:field="*{sku}" required>
+            <input type="text" placeholder="Name" th:field="*{name}" required>
+            <input type="text" placeholder="Category" th:field="*{category}">
+            <input type="text" placeholder="Supplier" th:field="*{supplier}">
+            <input type="number" placeholder="Unit Price" th:field="*{unitPrice}">
+            <input type="number" placeholder="Initial Stock" th:field="*{stockQuantity}">
+            <input type="number" placeholder="Min Stock Level" th:field="*{minStockLevel}">
+            <button type="submit">Add Product</button>
+        </form>
+    </div>
+
+    <div class="card">
+        <h3>All Products</h3>
+
+        <table>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Category</th>
+                <th>Stock</th>
+            </tr>
+
+            <tr th:each="p : ${products}">
+                <td th:text="${p.productId}"></td>
+                <td th:text="${p.name}"></td>
+                <td th:text="${p.category}"></td>
+                <td th:text="${p.stockQuantity}"></td>
+            </tr>
+        </table>
+    </div>
+
+</div>
+</body>
+</html>

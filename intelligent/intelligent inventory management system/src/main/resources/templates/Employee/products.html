@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Employee - Products</title>
+    <th:block th:replace="fragments/style :: style"></th:block>
+</head>
+<body>
+
+<div class="sidebar" style="background:#0f766e;">
+    <h2>Employee Panel</h2>
+    <a href="/employee/dashboard">Dashboard</a>
+    <a href="/products/employee/products">Products</a>
+    <a href="/alerts/employee">Alerts</a>
+    <a href="/transactions/employee">Transactions</a>
+    <a href="/auth/logout">Logout</a>
+</div>
+
+<div class="content">
+    <div th:if="${message}"
+         style="background-color:#d4edda;
+            color:#155724;
+            padding:10px;
+            margin-bottom:15px;
+            border-radius:6px;">
+        <span th:text="${message}"></span>
+    </div>
+
+    <div class="card">
+        <h3>Products</h3>
+
+        <table>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Stock</th>
+                <th>Stock In</th>
+                <th>Stock Out</th>
+            </tr>
+
+            <tr th:each="p : ${products}">
+                <td th:text="${p.productId}"></td>
+                <td th:text="${p.name}"></td>
+                <td th:text="${p.stockQuantity}"></td>
+
+                <td>
+                    <form th:action="@{/products/stock-in}" method="post">
+                        <input type="hidden" name="id" th:value="${p.productId}">
+                        <input type="number" name="qty" placeholder="Qty">
+                        <button type="submit">+</button>
+                    </form>
+                </td>
+
+                <td>
+                    <form th:action="@{/products/stock-out}" method="post">
+                        <input type="hidden" name="id" th:value="${p.productId}">
+                        <input type="number" name="qty" placeholder="Qty">
+                        <button type="submit">-</button>
+                    </form>
+                </td>
+            </tr>
+        </table>
+    </div>
+
+</div>
+</body>
+</html>

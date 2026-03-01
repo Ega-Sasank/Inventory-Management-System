@@ -6,10 +6,8 @@
   <component name="ChangeListManager">
     <list default="true" id="2b3e6483-c1d3-4864-ae1d-578bf1ff3d8e" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/intelligent inventory management system/src/main/java/ineventory/Entity/ActivityLog.java" beforeDir="false" afterPath="$PROJECT_DIR$/intelligent inventory management system/src/main/java/ineventory/Entity/ActivityLog.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/intelligent inventory management system/src/main/java/ineventory/Entity/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/intelligent inventory management system/src/main/java/ineventory/Entity/User.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/intelligent inventory management system/src/main/java/ineventory/Service/Impl/ActivityLogService.java" beforeDir="false" afterPath="$PROJECT_DIR$/intelligent inventory management system/src/main/java/ineventory/Service/Impl/ActivityLogService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/intelligent inventory management system/src/main/java/ineventory/Service/Impl/AuthServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/intelligent inventory management system/src/main/java/ineventory/Service/Impl/AuthServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/intelligent inventory management system/src/main/resources/templates/Admin/dashboard.html" beforeDir="false" afterPath="$PROJECT_DIR$/intelligent inventory management system/src/main/resources/templates/Admin/dashboard.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/intelligent inventory management system/src/main/resources/templates/Employee/dashboard.html" beforeDir="false" afterPath="$PROJECT_DIR$/intelligent inventory management system/src/main/resources/templates/Employee/dashboard.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -20,9 +18,9 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Enum" />
-        <option value="Interface" />
-        <option value="Class" />
         <option value="HTML File" />
+        <option value="Class" />
+        <option value="Interface" />
       </list>
     </option>
   </component>
@@ -40,6 +38,9 @@
   &quot;associatedIndex&quot;: 7
 }</component>
   <component name="ProjectId" id="39ekzpJdp6zrJ9lBMzxjd428vuQ" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="1" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />

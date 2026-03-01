@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Admin - Alerts</title>
+    <th:block th:replace="fragments/style :: style"></th:block>
+</head>
+<body>
+
+<div class="sidebar">
+    <h2>Admin Panel</h2>
+    <a href="/admin/dashboard">Dashboard</a>
+    <a href="/products/admin/products">Products</a>
+    <a href="/alerts/admin">Alerts</a>
+    <a href="/transactions/admin">Transactions</a>
+    <a href="/auth/logout">Logout</a>
+</div>
+
+<div class="content">
+    <div class="card">
+        <h3>Low Stock Alerts</h3>
+
+        <table>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Stock</th>
+                <th>Min Level</th>
+            </tr>
+
+            <tr th:each="p : ${lowStockProducts}">
+                <td th:text="${p.productId}"></td>
+                <td th:text="${p.name}"></td>
+                <td th:text="${p.stockQuantity}"></td>
+                <td th:text="${p.minStockLevel}"></td>
+            </tr>
+        </table>
+    </div>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Admin - Transactions</title>
+    <th:block th:replace="fragments/style :: style"></th:block>
+</head>
+<body>
+
+<div class="sidebar">
+    <h2>Admin Panel</h2>
+    <a href="/admin/dashboard">Dashboard</a>
+    <a href="/products/admin/products">Products</a>
+    <a href="/alerts/admin">Alerts</a>
+    <a href="/transactions/admin">Transactions</a>
+    <a href="/auth/logout">Logout</a>
+</div>
+
+<div class="content">
+    <div class="card">
+        <h3>Stock Transactions</h3>
+        <p>Transaction logs will appear here.</p>
+        <h3>Search by Product ID</h3>
+
+        <form th:action="@{/transactions/admin}" method="get">
+            <input type="number"
+                   name="productId"
+                   placeholder="Enter Product ID"
+                   style="padding:6px; width:200px;" />
+
+            <button type="submit"
+                    style="padding:6px 10px;">
+                Search
+            </button>
+
+            <a href="/transactions/admin"
+               style="margin-left:10px;">
+                Reset
+            </a>
+        </form>
+
+        <br>
+        <table>
+            <tr>
+                <th>ID</th>
+                <th>Type</th>
+                <th>Quantity</th>
+                <th>Time</th>
+                <th>Product ID</th>
+                <th>Product Name</th>
+            </tr>
+
+            <tr th:each="t : ${transactions}">
+                <td th:text="${t.id}"></td>
+                <td th:text="${t.type}"></td>
+                <td th:text="${t.quantity}"></td>
+                <td th:text="${t.timestamp}"></td>
+                <td th:text="${t.product.productId}"></td>
+                <td th:text="${t.product.name}"></td>
+            </tr>
+        </table>
+    </div>
+</div>
+
+</body>
+</html>

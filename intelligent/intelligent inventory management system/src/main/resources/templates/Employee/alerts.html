@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>Employee Dashboard</title>
+    <title>Employee - Alerts</title>
     <th:block th:replace="fragments/style :: style"></th:block>
 </head>
 <body>
@@ -17,8 +17,21 @@
 
 <div class="content">
     <div class="card">
-        <h3>Welcome Employee</h3>
-        <p>You can now access your assigned system features.</p>
+        <h3>Low Stock Alerts</h3>
+
+        <table>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Stock</th>
+            </tr>
+
+            <tr th:each="p : ${lowStockProducts}">
+                <td th:text="${p.productId}"></td>
+                <td th:text="${p.name}"></td>
+                <td th:text="${p.stockQuantity}"></td>
+            </tr>
+        </table>
     </div>
 </div>
 
