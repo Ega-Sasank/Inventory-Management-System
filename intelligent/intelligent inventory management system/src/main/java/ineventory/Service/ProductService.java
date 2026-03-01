@@ -83,4 +83,12 @@ public class ProductService {
                 .toList();
     }
 
+    /// for inventory total value to present in dashboard
+    public Double getTotalInventoryValue() {
+        return productRepository.findAll()
+                .stream()
+                .mapToDouble(p -> p.getStockQuantity() * p.getUnitPrice())
+                .sum();
+    }
+
 }
