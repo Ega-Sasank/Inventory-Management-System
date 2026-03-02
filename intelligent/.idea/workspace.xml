@@ -6,10 +6,27 @@
   <component name="ChangeListManager">
     <list default="true" id="2b3e6483-c1d3-4864-ae1d-578bf1ff3d8e" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/intelligent inventory management system/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/intelligent inventory management system/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/intelligent inventory management system/src/main/java/ineventory/Controller/AdminController.java" beforeDir="false" afterPath="$PROJECT_DIR$/intelligent inventory management system/src/main/java/ineventory/Controller/AdminController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/intelligent inventory management system/src/main/java/ineventory/Service/ProductService.java" beforeDir="false" afterPath="$PROJECT_DIR$/intelligent inventory management system/src/main/java/ineventory/Service/ProductService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/intelligent inventory management system/src/main/java/ineventory/Controller/TransactionController.java" beforeDir="false" afterPath="$PROJECT_DIR$/intelligent inventory management system/src/main/java/ineventory/Controller/TransactionController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/intelligent inventory management system/src/main/java/ineventory/Entity/Product.java" beforeDir="false" afterPath="$PROJECT_DIR$/intelligent inventory management system/src/main/java/ineventory/Entity/Product.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/intelligent inventory management system/src/main/java/ineventory/Entity/Transaction.java" beforeDir="false" afterPath="$PROJECT_DIR$/intelligent inventory management system/src/main/java/ineventory/Entity/Transaction.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/intelligent inventory management system/src/main/java/ineventory/Service/ProductValidationService.java" beforeDir="false" afterPath="$PROJECT_DIR$/intelligent inventory management system/src/main/java/ineventory/Service/ProductValidationService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/intelligent inventory management system/src/main/java/ineventory/Service/TransactionService.java" beforeDir="false" afterPath="$PROJECT_DIR$/intelligent inventory management system/src/main/java/ineventory/Service/TransactionService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/intelligent inventory management system/src/main/resources/templates/Admin/alerts.html" beforeDir="false" afterPath="$PROJECT_DIR$/intelligent inventory management system/src/main/resources/templates/Admin/alerts.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/intelligent inventory management system/src/main/resources/templates/Admin/dashboard.html" beforeDir="false" afterPath="$PROJECT_DIR$/intelligent inventory management system/src/main/resources/templates/Admin/dashboard.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/intelligent inventory management system/src/main/resources/templates/Admin/logs.html" beforeDir="false" afterPath="$PROJECT_DIR$/intelligent inventory management system/src/main/resources/templates/Admin/logs.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/intelligent inventory management system/src/main/resources/templates/Admin/pending-users.html" beforeDir="false" afterPath="$PROJECT_DIR$/intelligent inventory management system/src/main/resources/templates/Admin/pending-users.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/intelligent inventory management system/src/main/resources/templates/Admin/products.html" beforeDir="false" afterPath="$PROJECT_DIR$/intelligent inventory management system/src/main/resources/templates/Admin/products.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/intelligent inventory management system/src/main/resources/templates/Admin/transactions.html" beforeDir="false" afterPath="$PROJECT_DIR$/intelligent inventory management system/src/main/resources/templates/Admin/transactions.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/intelligent inventory management system/src/main/resources/templates/Auth/forgot.html" beforeDir="false" afterPath="$PROJECT_DIR$/intelligent inventory management system/src/main/resources/templates/Auth/forgot.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/intelligent inventory management system/src/main/resources/templates/Auth/login.html" beforeDir="false" afterPath="$PROJECT_DIR$/intelligent inventory management system/src/main/resources/templates/Auth/login.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/intelligent inventory management system/src/main/resources/templates/Auth/reset.html" beforeDir="false" afterPath="$PROJECT_DIR$/intelligent inventory management system/src/main/resources/templates/Auth/reset.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/intelligent inventory management system/src/main/resources/templates/Auth/signup.html" beforeDir="false" afterPath="$PROJECT_DIR$/intelligent inventory management system/src/main/resources/templates/Auth/signup.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/intelligent inventory management system/src/main/resources/templates/Employee/alerts.html" beforeDir="false" afterPath="$PROJECT_DIR$/intelligent inventory management system/src/main/resources/templates/Employee/alerts.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/intelligent inventory management system/src/main/resources/templates/Employee/dashboard.html" beforeDir="false" afterPath="$PROJECT_DIR$/intelligent inventory management system/src/main/resources/templates/Employee/dashboard.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/intelligent inventory management system/src/main/resources/templates/Employee/products.html" beforeDir="false" afterPath="$PROJECT_DIR$/intelligent inventory management system/src/main/resources/templates/Employee/products.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/intelligent inventory management system/src/main/resources/templates/Employee/transactions.html" beforeDir="false" afterPath="$PROJECT_DIR$/intelligent inventory management system/src/main/resources/templates/Employee/transactions.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -21,8 +38,8 @@
       <list>
         <option value="Enum" />
         <option value="Interface" />
-        <option value="Class" />
         <option value="HTML File" />
+        <option value="Class" />
       </list>
     </option>
   </component>

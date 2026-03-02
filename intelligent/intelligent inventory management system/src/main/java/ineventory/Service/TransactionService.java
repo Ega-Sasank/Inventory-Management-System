@@ -77,16 +77,16 @@ public class TransactionService {
     }
 
     ///  summary based on daily weekly monthly
-    public long getTodaySales() {
-        return transactionRepository.findAll()
+    public long getTodaySales(List<Transaction> transactions) {
+        return transactions
                 .stream()
                 .filter(t -> t.getType().equals("STOCK_OUT"))
                 .filter(t -> t.getTimestamp().toLocalDate()
                         .equals(LocalDate.now()))
                 .count();
     }
-    public long getWeeklySales() {
-        return transactionRepository.findAll()
+    public long getWeeklySales(List<Transaction> transactions) {
+        return transactions
                 .stream()
                 .filter(t -> t.getType().equals("STOCK_OUT"))
                 .filter(t -> t.getTimestamp().toLocalDate()
@@ -94,8 +94,8 @@ public class TransactionService {
                 .count();
     }
 
-    public long getMonthlySales() {
-        return transactionRepository.findAll()
+    public long getMonthlySales(List<Transaction> transactions) {
+        return transactions
                 .stream()
                 .filter(t -> t.getType().equals("STOCK_OUT"))
                 .filter(t -> t.getTimestamp().toLocalDate()

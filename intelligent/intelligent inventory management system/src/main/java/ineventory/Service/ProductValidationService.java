@@ -22,7 +22,7 @@ public class ProductValidationService {
         if (product.getName() == null || product.getName().isEmpty())
             return "Product name required";
 
-        if (product.getUnitPrice() <= 0)
+        if (product.getUnitPrice()== null ||product.getUnitPrice() <= 0)
             return "Invalid price";
 
         if (product.getMinStockLevel() < 0)

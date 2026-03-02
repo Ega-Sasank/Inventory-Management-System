@@ -2,7 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <title>Admin - Transactions</title>
-    <th:block th:replace="fragments/style :: style"></th:block>
+    <th:block th:replace="~{fragments/style :: style}"></th:block>
 </head>
 <body>
 
@@ -21,23 +21,42 @@
         <p>Transaction logs will appear here.</p>
         <h3>Search by Product ID</h3>
 
-        <form th:action="@{/transactions/admin}" method="get">
-            <input type="number"
-                   name="productId"
-                   placeholder="Enter Product ID"
-                   style="padding:6px; width:200px;" />
+        <div style="display:flex;
+            justify-content:space-between;
+            align-items:center;
+            margin-bottom:15px;">
 
-            <button type="submit"
-                    style="padding:6px 10px;">
-                Search
-            </button>
+            <!-- LEFT SIDE (Search Section) -->
+            <form th:action="@{/transactions/admin}" method="get"
+                  style="display:flex; align-items:center; gap:10px;">
 
-            <a href="/transactions/admin"
-               style="margin-left:10px;">
-                Reset
+                <input type="number"
+                       name="productId"
+                       placeholder="Enter Product ID"
+                       style="padding:6px; width:200px;" />
+
+                <button type="submit"
+                        style="padding:6px 12px;">
+                    Search
+                </button>
+
+                <a th:href="@{/transactions/admin}">
+                    Reset
+                </a>
+
+            </form>
+
+            <!-- RIGHT SIDE (PDF Button) -->
+            <a th:href="@{/transactions/admin/report(productId=${param.productId})}"
+               style="background:#4e73df;
+              color:white;
+              padding:6px 12px;
+              border-radius:5px;
+              text-decoration:none;">
+                Download Transactions PDF
             </a>
-        </form>
 
+        </div>
         <br>
         <table>
             <tr>

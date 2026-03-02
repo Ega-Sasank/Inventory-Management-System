@@ -25,7 +25,7 @@ public class Transaction {
     private LocalDateTime timestamp;
 
     /// many to one relationship
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name="product_id")
     private Product product;
 

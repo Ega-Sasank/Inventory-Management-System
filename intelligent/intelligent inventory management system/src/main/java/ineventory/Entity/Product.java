@@ -29,6 +29,7 @@ public class Product {
 
     private String supplier;
 
+    @Column(nullable = false)
     private Double unitPrice;
 
     private Integer stockQuantity;
