@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 
 @Service
@@ -73,7 +74,7 @@ public class ProductService {
     }
 
     public List<Product> getAllProducts() {
-        return productRepository.findAll();
+        return productRepository.findByStatus("ACTIVE");
     }
 
     public List<Product> getLowStockProducts() {
@@ -90,5 +91,68 @@ public class ProductService {
                 .mapToDouble(p -> p.getStockQuantity() * p.getUnitPrice())
                 .sum();
     }
+
+    public Product getProductById(Long id) {
+        return productRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Product not found"));
+    }
+
+    public String updateProduct(Long id, Product updatedProduct) {
+
+        Optional<Product> optionalProduct = productRepository.findById(id);
+
+        if (optionalProduct.isEmpty()) {
+            return "Product not found";
+        }
+
+        Product existing = optionalProduct.get();
+
+        // Validation
+        if (updatedProduct.getUnitPrice() == null ||
+                updatedProduct.getUnitPrice() <= 0) {
+            return "Invalid Unit Price";
+        }
+
+        if (updatedProduct.getMinStockLevel() == null ||
+                updatedProduct.getMinStockLevel() < 0) {
+            return "Invalid Minimum Stock Level";
+        }
+
+        // Set updated values
+        existing.setName(updatedProduct.getName());
+        existing.setCategory(updatedProduct.getCategory());
+        existing.setSupplier(updatedProduct.getSupplier());
+        existing.setUnitPrice(updatedProduct.getUnitPrice());
+        existing.setMinStockLevel(updatedProduct.getMinStockLevel());
+
+        productRepository.save(existing);
+
+        return "SUCCESS";
+    }
+
+    // =========================
+    //  SOFT DELETE
+    // =========================
+    public String deleteProduct(Long id) {
+
+        Optional<Product> optionalProduct = productRepository.findById(id);
+
+        if (optionalProduct.isEmpty()) {
+            return "Product not found";
+        }
+
+        Product product = optionalProduct.get();
+
+        if ("INACTIVE".equals(product.getStatus())) {
+            return "Already deleted";
+        }
+
+        product.setStatus("INACTIVE");
+
+        productRepository.save(product);
+
+        return "SUCCESS";
+    }
+
 
 }

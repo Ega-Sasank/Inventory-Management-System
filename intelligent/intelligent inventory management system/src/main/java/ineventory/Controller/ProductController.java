@@ -16,7 +16,7 @@ public class ProductController {
     private ProductService productService;
 
     // =========================
-    // 🔵 ADMIN DASHBOARD
+    //  ADMIN DASHBOARD
     // =========================
     /*@GetMapping("/admin")
     public String showAdminPage(Model model) {
@@ -29,7 +29,7 @@ public class ProductController {
         return "admin/dashboard";
     }*/
 
-    // 🔵 ADMIN - Add Product
+    //  ADMIN - Add Product
     @PostMapping("/add")
     public String addProduct(@ModelAttribute Product product,
                              RedirectAttributes redirectAttributes) {
@@ -83,17 +83,77 @@ public class ProductController {
 
     }
 
-    @GetMapping("/admin/products")
-    public String adminProducts(Model model) {
-        model.addAttribute("product",new Product());
-        model.addAttribute("products", productService.getAllProducts());
-        return "admin/products";
-    }
+//    @GetMapping("/admin/products")
+//    public String adminProducts(Model model) {
+//        model.addAttribute("product",new Product());
+//        model.addAttribute("products", productService.getAllProducts());
+//        return "admin/products";
+//    }
 
     @GetMapping("/employee/products")
     public String employeeProducts(Model model) {
         model.addAttribute("products", productService.getAllProducts());
         return "employee/products";
+    }
+
+
+
+
+    // =========================
+//  ADMIN - Products Page
+// =========================
+    @GetMapping("/admin/products")
+    public String adminProducts(Model model) {
+
+        model.addAttribute("product", new Product()); // empty form
+        model.addAttribute("products", productService.getAllProducts());
+
+        return "admin/products";
+    }
+
+
+    // =========================
+//  EDIT (Load into Same Form)
+// =========================
+    @GetMapping("/admin/edit/{id}")
+    public String editProduct(@PathVariable Long id, Model model) {
+
+        Product product = productService.getProductById(id);
+
+        model.addAttribute("product", product); // load selected product
+        model.addAttribute("products", productService.getAllProducts());
+
+        return "admin/products"; // SAME PAGE
+    }
+
+
+    // =========================
+//  UPDATE (Submit Form)
+// =========================
+    @PostMapping("/admin/update")
+    public String updateProduct(@ModelAttribute Product product,
+                                RedirectAttributes redirectAttributes) {
+
+        String result = productService.updateProduct(
+                product.getProductId(), product);
+
+        redirectAttributes.addFlashAttribute("message", result);
+
+        return "redirect:/products/admin/products";
+    }
+
+
+    // =========================
+// DELETE
+// =========================
+    @GetMapping("/admin/delete/{id}")
+    public String deleteProduct(@PathVariable Long id,
+                                RedirectAttributes redirectAttributes) {
+
+        String result = productService.deleteProduct(id);
+        redirectAttributes.addFlashAttribute("message", result);
+
+        return "redirect:/products/admin/products";
     }
 
 }

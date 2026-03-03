@@ -18,9 +18,18 @@
 <div class="content">
 
     <div class="card">
-        <h3>Add Product</h3>
+        <!--<h3>Add Product</h3>
 
-        <form th:action="@{/products/add}" method="post" th:object="${product}">
+        <form th:action="@{/products/add}" method="post" th:object="${product}">-->
+        <h3 th:text="${product.productId == null} ? 'Add Product' : 'Update Product'"></h3>
+
+        <form th:action="${product.productId == null} ?
+        @{/products/add} :
+        @{/products/admin/update}"
+              method="post"
+              th:object="${product}">
+
+            <input type="hidden" th:field="*{productId}" />
             <input type="text" placeholder="SKU" th:field="*{sku}" required>
             <input type="text" placeholder="Name" th:field="*{name}" required>
             <input type="text" placeholder="Category" th:field="*{category}">
@@ -28,7 +37,10 @@
             <input type="number" placeholder="Unit Price" th:field="*{unitPrice}">
             <input type="number" placeholder="Initial Stock" th:field="*{stockQuantity}">
             <input type="number" placeholder="Min Stock Level" th:field="*{minStockLevel}">
-            <button type="submit">Add Product</button>
+            <!--<button type="submit">Add Product</button>-->
+            <button type="submit"
+                    th:text="${product.productId == null} ? 'Add Product' : 'Update Product'">
+            </button>
         </form>
     </div>
 
@@ -41,13 +53,34 @@
                 <th>Name</th>
                 <th>Category</th>
                 <th>Stock</th>
+                <th>Actions</th>
             </tr>
 
+           <!-- <tr th:each="p : ${products}">
+                <td th:text="${p.productId}"></td>
+                <td th:text="${p.name}"></td>
+                <td th:text="${p.category}"></td>
+                <td th:text="${p.stockQuantity}"></td>
+            </tr>-->
             <tr th:each="p : ${products}">
                 <td th:text="${p.productId}"></td>
                 <td th:text="${p.name}"></td>
                 <td th:text="${p.category}"></td>
                 <td th:text="${p.stockQuantity}"></td>
+
+                <td>
+                    <a th:href="@{/products/admin/edit/{id}(id=${p.productId})}"
+                       style="color:blue;">Edit</a>
+                    |
+                    <!--<a th:href="@{/products/admin/delete/{id}(id=${p.productId})}"
+                       onclick="return confirm('Are you sure?')"
+                       style="color:red;">Delete</a>-->
+                    <a th:href="@{/products/admin/delete/{id}(id=${p.productId})}"
+                       onclick="return confirm('Are you sure you want to delete this product?');"
+                       style="color:red;">
+                        Delete
+                    </a>
+                </td>
             </tr>
         </table>
     </div>

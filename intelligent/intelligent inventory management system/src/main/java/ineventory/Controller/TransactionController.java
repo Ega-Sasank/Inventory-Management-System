@@ -38,7 +38,7 @@ public class TransactionController {
 //        return "employee/transactions";
 //    }
 
-    // 🔵 ADMIN SIDE
+    //  ADMIN SIDE
     @GetMapping("/admin")
     public String adminTransactions(
             @RequestParam(required = false) Long productId,
