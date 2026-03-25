@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Employee - Alerts</title>
+    <th:block th:replace="~{fragments/style :: style}"></th:block>
+</head>
+<body>
+
+<div class="sidebar" style="background:#0f766e;">
+    <h2>Employee Panel</h2>
+    <a href="/employee/dashboard">Dashboard</a>
+    <a href="/products/employee/products">Products</a>
+    <a href="/alerts/employee">Alerts</a>
+    <a href="/transactions/employee">Transactions</a>
+    <a href="/auth/logout">Logout</a>
+</div>
+
+<div class="content">
+    <div class="card">
+        <h3>Active Alerts</h3>
+
+        <table>
+            <tr>
+                <th>Product ID</th>
+                <th>Type</th>
+                <th>Severity</th>
+                <th>Message</th>
+            </tr>
+
+            <tr th:each="a : ${alerts}">
+                <td th:text="${a.productId}"></td>
+                <td th:text="${a.alertType}"></td>
+
+                <td th:text="${a.severity}"
+                    th:style="${a.severity=='HIGH'} ?
+            'color:red;font-weight:bold' :
+            'color:orange'">
+                </td>
+
+                <td th:text="${a.message}"></td>
+            </tr>
+        </table>
+    </div>
+</div>
+
+</body>
+</html>

@@ -1,5 +1,6 @@
 package ineventory.Repository;
 
+import ineventory.Entity.Role;
 import ineventory.Entity.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 
@@ -15,4 +16,6 @@ public interface UserRepository extends JpaRepository<User,Long> {
 
     //boolean existsByRole(Role role);       // For admin existence check
     List<User> findByStatus(String status); // For pending users
+
+    List<User> findByRole(Role role);
 }

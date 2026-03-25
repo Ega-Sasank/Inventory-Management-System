@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Admin - Transactions</title>
+    <th:block th:replace="~{fragments/style :: style}"></th:block>
+</head>
+<body>
+
+<div class="sidebar">
+    <h2>Admin Panel</h2>
+    <a href="/admin/dashboard">Dashboard</a>
+    <a href="/products/admin/products">Products</a>
+    <a href="/alerts/employee">
+        Alerts
+        <span th:if="${alertCount > 0}"
+              style="background:red;
+                 color:white;
+                 padding:2px 6px;
+                 border-radius:10px;
+                 font-size:12px;
+                 margin-left:5px;">
+        <span th:text="${alertCount}"></span>
+    </span>
+    </a>
+    <a href="/transactions/admin">Transactions</a>
+    <a href="/auth/logout">Logout</a>
+</div>
+
+<div class="content">
+    <div class="card">
+        <h3>Stock Transactions</h3>
+        <p>Transaction logs will appear here.</p>
+        <h3>Search by Product ID</h3>
+
+        <div style="display:flex;
+            justify-content:space-between;
+            align-items:center;
+            margin-bottom:15px;">
+
+            <!-- LEFT SIDE (Search Section) -->
+            <form th:action="@{/transactions/admin}" method="get"
+                  style="display:flex; align-items:center; gap:10px;">
+
+                <input type="number"
+                       name="productId"
+                       placeholder="Enter Product ID"
+                       style="padding:6px; width:200px;" />
+
+                <button type="submit"
+                        style="padding:6px 12px;">
+                    Search
+                </button>
+
+                <a th:href="@{/transactions/admin}">
+                    Reset
+                </a>
+
+            </form>
+
+            <!-- RIGHT SIDE (PDF Button) -->
+            <a th:href="@{/transactions/admin/report(productId=${param.productId})}"
+               style="background:#4e73df;
+              color:white;
+              padding:6px 12px;
+              border-radius:5px;
+              text-decoration:none;">
+                Download Transactions PDF
+            </a>
+
+        </div>
+        <br>
+        <table>
+            <tr>
+                <th>ID</th>
+                <th>Type</th>
+                <th>Quantity</th>
+                <th>Time</th>
+                <th>Product ID</th>
+                <th>Product Name</th>
+                <th>User</th>
+            </tr>
+
+            <tr th:each="t : ${transactions}">
+                <td th:text="${t.id}"></td>
+                <td th:text="${t.type}"
+                    th:style="${t.type == 'STOCK_IN'} ? 'color:green;font-weight:bold;' : 'color:red;font-weight:bold;'">
+                </td>
+                <td th:text="${t.quantity}"></td>
+                <td th:text="${t.timestamp}"></td>
+                <td th:text="${t.product.productId}"></td>
+                <td th:text="${t.product.name}"></td>
+                <td th:text="${t.performedByUser}"></td>
+            </tr>
+        </table>
+    </div>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Admin - Alerts</title>
+    <th:block th:replace="~{fragments/style :: style}"></th:block>
+</head>
+<body>
+
+<div class="sidebar">
+    <h2>Admin Panel</h2>
+    <a href="/admin/dashboard">Dashboard</a>
+    <a href="/products/admin/products">Products</a>
+    <a href="/alerts/admin">Alerts</a>
+    <a href="/transactions/admin">Transactions</a>
+    <a href="/auth/logout">Logout</a>
+</div>
+
+<div class="content">
+    <div class="card">
+        <!--<h3>Low Stock Alerts</h3>
+
+        <table>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Stock</th>
+                <th>Min Level</th>
+            </tr>
+
+            <tr th:each="p : ${lowStockProducts}">
+                <td th:text="${p.productId}"></td>
+                <td th:text="${p.name}"></td>
+                <td th:text="${p.stockQuantity}"></td>
+                <td th:text="${p.minStockLevel}"></td>
+            </tr>
+        </table>-->
+        <h3>Inventory Alerts</h3>
+        <div th:if="${#lists.isEmpty(alerts)}"
+             style="color:gray;margin-bottom:10px;">
+            No alerts available.
+        </div>
+
+        <table>
+            <tr>
+                <th>Alert ID</th>
+                <th>Product ID</th>
+                <th>Type</th>
+                <th>Severity</th>
+                <th>Message</th>
+                <th>Status</th>
+                <th>Date</th>
+            </tr>
+
+            <tr th:each="a : ${alerts}">
+                <td th:text="${a.alertId}"></td>
+                <td th:text="${a.productId}"></td>
+                <td th:text="${a.alertType}"></td>
+
+                <td th:text="${a.severity}"
+                    th:style="${a.severity=='HIGH'} ?
+            'color:red;font-weight:bold' :
+            (${a.severity=='MEDIUM'} ?
+            'color:orange' : 'color:green')">
+                </td>
+
+                <td th:text="${a.message}"></td>
+                <td th:text="${a.status}"></td>
+                <td th:text="${a.createdDate}"></td>
+            </tr>
+
+        </table>
+    </div>
+</div>
+
+</body>
+</html>
