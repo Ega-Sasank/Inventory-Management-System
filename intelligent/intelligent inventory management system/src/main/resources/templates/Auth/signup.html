@@ -3,31 +3,104 @@
 <head>
     <title>Signup</title>
     <th:block th:replace="~{fragments/style :: style}"></th:block>
+
+    <!-- Icons -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
 </head>
-<body style="display:flex;justify-content:center;align-items:center;height:100vh;background:linear-gradient(to right,#11998e,#38ef7d);">
 
-<div class="card" style="width:400px;">
-    <h2 style="text-align:center;">Register User</h2>
+<body style="display:flex;justify-content:center;align-items:center;height:100vh;
+background:linear-gradient(135deg,#4f46e5,#7c3aed);">
 
-    <form th:action="@{/auth/signup}" method="post" th:object="${signupRequest}">
-        <input type="text" th:field="*{username}" placeholder="Username" required/>
-        <input type="email" th:field="*{email}" placeholder="Email" required/>
-        <input type="password" th:field="*{password}" placeholder="Password" required/>
+<div class="card" style="width:380px; text-align:center;">
 
+    <!-- TITLE -->
+    <h2 style="margin-bottom:5px;">📝 Create Account</h2>
+    <p style="color:#64748b; font-size:14px; margin-bottom:20px;">
+        Register to access Inventra
+    </p>
+
+    <!-- FORM -->
+    <form th:action="@{/auth/signup}" method="post"
+          th:object="${signupRequest}"
+          style="display:flex; flex-direction:column; gap:15px;">
+
+        <!-- USERNAME -->
+        <input type="text"
+               th:field="*{username}"
+               placeholder="👤 Username"
+               required/>
+
+        <!-- EMAIL -->
+        <input type="email"
+               th:field="*{email}"
+               placeholder="📧 Email"
+               required/>
+
+        <!-- PASSWORD -->
+        <div style="position:relative;">
+            <input type="password"
+                   th:field="*{password}"
+                   id="password"
+                   placeholder="🔒 Password"
+                   required
+                   style="width:100%; padding-right:40px;" />
+
+            <i class="fa fa-eye"
+               onclick="togglePassword()"
+               style="position:absolute; right:12px; top:50%;
+                      transform:translateY(-50%);
+                      cursor:pointer; color:#64748b;">
+            </i>
+        </div>
+
+        <!-- ROLE -->
         <select th:field="*{role}">
-            <option value="ADMIN">ADMIN</option>
-            <option value="EMPLOYEE">EMPLOYEE</option>
+            <option value="">Select Role</option>
+            <option value="ADMIN">Admin</option>
+            <option value="EMPLOYEE">Employee</option>
         </select>
 
-        <button type="submit">Sign up</button>
-        <div style="margin-top:15px; text-align:center;">
-            Already have an account?
-            <a th:href="@{/auth/login}">Login</a>
-        </div>
+        <!-- BUTTON -->
+        <button type="submit">
+            <i class="fa fa-user-plus"></i>
+            Sign Up
+        </button>
+
     </form>
 
-    <p th:text="${message}" style="text-align:center;color:green;"></p>
+    <!-- MESSAGE -->
+    <p th:if="${message}"
+       th:text="${message}"
+       style="margin-top:15px; color:#16a34a; font-size:14px;">
+    </p>
+
+    <!-- LOGIN LINK -->
+    <div style="margin-top:15px; font-size:14px;">
+        Already have an account?
+        <a th:href="@{/auth/login}" style="color:#2563eb;">
+            Login
+        </a>
+    </div>
+
 </div>
+
+<!-- PASSWORD TOGGLE -->
+<script>
+    function togglePassword() {
+        const input = document.getElementById("password");
+        const icon = event.target;
+
+        if (input.type === "password") {
+            input.type = "text";
+            icon.classList.remove("fa-eye");
+            icon.classList.add("fa-eye-slash");
+        } else {
+            input.type = "password";
+            icon.classList.remove("fa-eye-slash");
+            icon.classList.add("fa-eye");
+        }
+    }
+</script>
 
 </body>
 </html>

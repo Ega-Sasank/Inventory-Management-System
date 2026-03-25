@@ -3,25 +3,92 @@
 <head>
     <title>Inventra Login</title>
     <th:block th:replace="~{fragments/style :: style}"></th:block>
+
+    <!-- Icons -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
 </head>
-<body style="display:flex;justify-content:center;align-items:center;height:100vh;background:linear-gradient(to right,#1e3c72,#2a5298);">
 
-<div class="card" style="width:350px;">
-    <h2 style="text-align:center;">Inventra Login</h2>
+<body style="display:flex;justify-content:center;align-items:center;height:100vh;
+background:linear-gradient(135deg,#4f46e5,#7c3aed);">
 
-    <form th:action="@{/auth/login}" method="post" th:object="${loginRequest}">
-        <input type="text" th:field="*{username}" placeholder="Username" required/>
-        <input type="password" th:field="*{password}" placeholder="Password" required/>
-        <button type="submit">Sign in</button>
+<div class="card" style="width:380px; text-align:center;">
+
+    <!-- TITLE -->
+    <h2 style="margin-bottom:5px;">🚀 Inventra</h2>
+    <p style="color:#64748b; font-size:14px; margin-bottom:20px;">
+        Sign in to your account
+    </p>
+
+    <!-- FORM -->
+    <form th:action="@{/auth/login}" method="post" th:object="${loginRequest}"
+          style="display:flex; flex-direction:column; gap:15px;">
+
+        <!-- USERNAME -->
+        <input type="text"
+               th:field="*{username}"
+               placeholder="👤 Username"
+               required/>
+
+        <!-- PASSWORD WITH TOGGLE -->
+        <div style="position:relative;">
+            <input type="password"
+                   th:field="*{password}"
+                   id="password"
+                   placeholder="🔒 Password"
+                   required
+                   style="width:100%; padding-right:40px;" />
+
+            <i class="fa fa-eye"
+               onclick="togglePassword()"
+               style="position:absolute; right:12px; top:50%; transform:translateY(-50%);
+                      cursor:pointer; color:#64748b;">
+            </i>
+        </div>
+
+        <!-- BUTTON -->
+        <button type="submit">
+            <i class="fa fa-sign-in-alt"></i>
+            Sign in
+        </button>
+
     </form>
 
-    <p th:text="${message}" style="color:red;text-align:center;"></p>
+    <!-- ERROR MESSAGE -->
+    <p th:if="${message}"
+       th:text="${message}"
+       style="color:#dc2626; margin-top:15px; font-size:14px;">
+    </p>
 
-    <div style="text-align:center;margin-top:10px;">
-        <a th:href="@{/auth/signup}">Create New Account</a> |
-        <a th:href="@{/auth/forgot}">Forgot?</a>
+    <!-- LINKS -->
+    <div style="margin-top:15px; font-size:14px;">
+        <a th:href="@{/auth/signup}" style="color:#2563eb;">
+            Create Account
+        </a>
+        |
+        <a th:href="@{/auth/forgot}" style="color:#2563eb;">
+            Forgot Password?
+        </a>
     </div>
+
 </div>
+
+<!-- PASSWORD TOGGLE SCRIPT -->
+<script>
+    function togglePassword() {
+        const input = document.getElementById("password");
+        const icon = event.target;
+
+        if (input.type === "password") {
+            input.type = "text";
+            icon.classList.remove("fa-eye");
+            icon.classList.add("fa-eye-slash");
+        } else {
+            input.type = "password";
+            icon.classList.remove("fa-eye-slash");
+            icon.classList.add("fa-eye");
+        }
+    }
+</script>
 
 </body>
 </html>

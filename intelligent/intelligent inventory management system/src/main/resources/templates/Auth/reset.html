@@ -3,29 +3,87 @@
 <head>
     <title>Reset Password</title>
     <th:block th:replace="~{fragments/style :: style}"></th:block>
+
+    <!-- Icons -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
 </head>
-<body style="display:flex;justify-content:center;align-items:center;height:100vh;background:#f4f6f9;">
 
-<div class="card" style="width:400px;">
-    <h2 style="text-align:center;">Reset Password</h2>
+<body style="display:flex;justify-content:center;align-items:center;height:100vh;
+background:linear-gradient(135deg,#4f46e5,#7c3aed);">
 
+<div class="card" style="width:380px; text-align:center;">
+
+    <!-- TITLE -->
+    <h2 style="margin-bottom:5px;">🔑 Reset Password</h2>
+    <p style="color:#64748b; font-size:14px; margin-bottom:20px;">
+        Enter your new password below
+    </p>
+
+    <!-- FORM -->
     <form th:action="@{/auth/reset}"
           th:object="${resetRequest}"
-          method="post">
+          method="post"
+          style="display:flex; flex-direction:column; gap:15px;">
 
+        <!-- TOKEN -->
         <input type="hidden" th:field="*{token}" />
 
-        <input type="password"
-               th:field="*{newPassword}"
-               placeholder="New Password"
-               required/>
+        <!-- NEW PASSWORD -->
+        <div style="position:relative;">
+            <input type="password"
+                   th:field="*{newPassword}"
+                   id="password"
+                   placeholder="🔒 New Password"
+                   required
+                   style="width:100%; padding-right:40px;" />
 
-        <button type="submit">Reset Password</button>
+            <i class="fa fa-eye"
+               onclick="togglePassword()"
+               style="position:absolute; right:12px; top:50%; transform:translateY(-50%);
+                      cursor:pointer; color:#64748b;">
+            </i>
+        </div>
+
+        <!-- BUTTON -->
+        <button type="submit">
+            <i class="fa fa-key"></i>
+            Reset Password
+        </button>
+
     </form>
 
+    <!-- SUCCESS MESSAGE -->
+    <p th:if="${message}"
+       th:text="${message}"
+       style="margin-top:15px; color:#16a34a; font-size:14px;">
+    </p>
 
-    <p th:text="${message}" style="text-align:center;color:green;"></p>
+    <!-- BACK TO LOGIN -->
+    <div style="margin-top:15px;">
+        <a th:href="@{/auth/login}" style="color:#2563eb; font-size:14px;">
+            ← Back to Login
+        </a>
+    </div>
+
 </div>
+
+<!-- PASSWORD TOGGLE -->
+<script>
+    function togglePassword() {
+        const input = document.getElementById("password");
+        const icon = event.target;
+
+        if (input.type === "password") {
+            input.type = "text";
+            icon.classList.remove("fa-eye");
+            icon.classList.add("fa-eye-slash");
+        } else {
+            input.type = "password";
+            icon.classList.remove("fa-eye-slash");
+            icon.classList.add("fa-eye");
+        }
+    }
+</script>
 
 </body>
 </html>

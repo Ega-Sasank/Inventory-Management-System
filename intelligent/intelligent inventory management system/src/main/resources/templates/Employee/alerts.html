@@ -3,44 +3,101 @@
 <head>
     <title>Employee - Alerts</title>
     <th:block th:replace="~{fragments/style :: style}"></th:block>
+
+    <!-- Icons -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
 </head>
 <body>
 
-<div class="sidebar" style="background:#0f766e;">
-    <h2>Employee Panel</h2>
-    <a href="/employee/dashboard">Dashboard</a>
-    <a href="/products/employee/products">Products</a>
-    <a href="/alerts/employee">Alerts</a>
-    <a href="/transactions/employee">Transactions</a>
-    <a href="/auth/logout">Logout</a>
+<!-- SIDEBAR -->
+<div class="sidebar">
+    <h2>👨‍💼 Employee</h2>
+
+    <a href="/employee/dashboard">
+        <i class="fa fa-home"></i> <span>Dashboard</span>
+    </a>
+
+    <a href="/products/employee/products">
+        <i class="fa fa-box"></i> <span>Products</span>
+    </a>
+
+    <a href="/alerts/employee" class="active">
+        <i class="fa fa-bell"></i> <span>Alerts</span>
+    </a>
+
+    <a href="/transactions/employee">
+        <i class="fa fa-exchange-alt"></i> <span>Transactions</span>
+    </a>
+
+    <a href="/auth/logout">
+        <i class="fa fa-sign-out-alt"></i> <span>Logout</span>
+    </a>
 </div>
 
+<!-- CONTENT -->
 <div class="content">
-    <div class="card">
-        <h3>Active Alerts</h3>
 
-        <table>
+    <!-- TOPBAR -->
+    <div class="topbar">
+        <h2>🚨 Alerts</h2>
+        <span style="color:#64748b;">Monitor product alerts</span>
+    </div>
+
+    <div class="card">
+
+        <!-- EMPTY STATE -->
+        <div th:if="${#lists.isEmpty(alerts)}"
+             style="text-align:center; padding:30px; color:#64748b;">
+            <i class="fa fa-check-circle" style="font-size:40px;"></i>
+            <p>No alerts available 🎉</p>
+        </div>
+
+        <!-- TABLE -->
+        <table th:if="${!#lists.isEmpty(alerts)}">
+
+            <thead>
             <tr>
-                <th>Product ID</th>
+                <th>Product</th>
                 <th>Type</th>
                 <th>Severity</th>
                 <th>Message</th>
             </tr>
+            </thead>
 
+            <tbody>
             <tr th:each="a : ${alerts}">
-                <td th:text="${a.productId}"></td>
-                <td th:text="${a.alertType}"></td>
 
-                <td th:text="${a.severity}"
-                    th:style="${a.severity=='HIGH'} ?
-            'color:red;font-weight:bold' :
-            'color:orange'">
+                <td>
+                    #<span th:text="${a.productId}"></span>
+                </td>
+
+                <td>
+                    <span class="badge-orange"
+                          th:text="${a.alertType}">
+                    </span>
+                </td>
+
+                <!-- SEVERITY BADGE -->
+                <td>
+                    <span th:if="${a.severity == 'HIGH'}"
+                          class="badge-red">HIGH</span>
+
+                    <span th:if="${a.severity == 'MEDIUM'}"
+                          class="badge-orange">MEDIUM</span>
+
+                    <span th:if="${a.severity == 'LOW'}"
+                          class="badge-green">LOW</span>
                 </td>
 
                 <td th:text="${a.message}"></td>
+
             </tr>
+            </tbody>
+
         </table>
+
     </div>
+
 </div>
 
 </body>

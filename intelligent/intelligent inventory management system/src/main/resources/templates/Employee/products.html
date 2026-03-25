@@ -3,43 +3,65 @@
 <head>
     <title>Employee - Products</title>
     <th:block th:replace="~{fragments/style :: style}"></th:block>
+
+    <!-- Icons -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
 </head>
 <body>
 
-<div class="sidebar" style="background:#0f766e;">
-    <h2>Employee Panel</h2>
-    <a href="/employee/dashboard">Dashboard</a>
-    <a href="/products/employee/products">Products</a>
-    <a href="/alerts/employee">
-        Alerts
-        <span th:if="${alertCount > 0}"
-              style="background:red;
-                 color:white;
-                 padding:2px 6px;
-                 border-radius:10px;
-                 font-size:12px;
-                 margin-left:5px;">
-        <span th:text="${alertCount}"></span>
-    </span>
+<!-- SIDEBAR -->
+<div class="sidebar">
+    <h2>👨‍💼 Employee</h2>
+
+    <a href="/employee/dashboard">
+        <i class="fa fa-home"></i> <span>Dashboard</span>
     </a>
-    <a href="/transactions/employee">Transactions</a>
-    <a href="/auth/logout">Logout</a>
+
+    <a href="/products/employee/products" class="active">
+        <i class="fa fa-box"></i> <span>Products</span>
+    </a>
+
+    <a href="/alerts/employee" style="justify-content:space-between;">
+        <div style="display:flex; gap:10px;">
+            <i class="fa fa-bell"></i> <span>Alerts</span>
+        </div>
+
+        <span th:if="${alertCount > 0}"
+              class="badge-red"
+              th:text="${alertCount}">
+        </span>
+    </a>
+
+    <a href="/transactions/employee">
+        <i class="fa fa-exchange-alt"></i> <span>Transactions</span>
+    </a>
+
+    <a href="/auth/logout">
+        <i class="fa fa-sign-out-alt"></i> <span>Logout</span>
+    </a>
 </div>
 
+<!-- CONTENT -->
 <div class="content">
-    <div th:if="${message}"
-         style="background-color:#d4edda;
-            color:#155724;
-            padding:10px;
-            margin-bottom:15px;
-            border-radius:6px;">
+
+    <!-- TOPBAR -->
+    <div class="topbar">
+        <h2>📦 Products</h2>
+        <span style="color:#64748b;">Manage stock easily</span>
+    </div>
+
+    <!-- SUCCESS MESSAGE -->
+    <div th:if="${message}" class="card"
+         style="background:#dcfce7; color:#166534;">
+        <i class="fa fa-check-circle"></i>
         <span th:text="${message}"></span>
     </div>
 
+    <!-- TABLE CARD -->
     <div class="card">
-        <h3>Products</h3>
 
         <table>
+            <thead>
             <tr>
                 <th>ID</th>
                 <th>Name</th>
@@ -47,31 +69,67 @@
                 <th>Stock In</th>
                 <th>Stock Out</th>
             </tr>
+            </thead>
 
+            <tbody>
             <tr th:each="p : ${products}">
+
                 <td th:text="${p.productId}"></td>
-                <td th:text="${p.name}"></td>
-                <td th:text="${p.stockQuantity}"></td>
 
                 <td>
-                    <form th:action="@{/products/stock-in}" method="post">
+                    <b th:text="${p.name}"></b>
+                </td>
+
+                <!-- STOCK BADGE -->
+                <td>
+                    <span th:text="${p.stockQuantity}"
+                          th:classappend="${p.stockQuantity < 10} ? 'badge-red' : 'badge-green'">
+                    </span>
+                </td>
+
+                <!-- STOCK IN -->
+                <td>
+                    <form th:action="@{/products/stock-in}" method="post"
+                          style="display:flex; gap:5px; justify-content:center;">
+
                         <input type="hidden" name="id" th:value="${p.productId}">
-                        <input type="number" name="qty" placeholder="Qty">
-                        <button type="submit">+</button>
+
+                        <input type="number" name="qty"
+                               placeholder="Qty"
+                               style="width:70px;">
+
+                        <button type="submit" style="background:#16a34a;">
+                            <i class="fa fa-plus"></i>
+                        </button>
+
                     </form>
                 </td>
 
+                <!-- STOCK OUT -->
                 <td>
-                    <form th:action="@{/products/stock-out}" method="post">
+                    <form th:action="@{/products/stock-out}" method="post"
+                          style="display:flex; gap:5px; justify-content:center;">
+
                         <input type="hidden" name="id" th:value="${p.productId}">
-                        <input type="number" name="qty" placeholder="Qty">
-                        <button type="submit">-</button>
+
+                        <input type="number" name="qty"
+                               placeholder="Qty"
+                               style="width:70px;">
+
+                        <button type="submit" style="background:#dc2626;">
+                            <i class="fa fa-minus"></i>
+                        </button>
+
                     </form>
                 </td>
+
             </tr>
+            </tbody>
         </table>
+
     </div>
 
 </div>
+
 </body>
 </html>

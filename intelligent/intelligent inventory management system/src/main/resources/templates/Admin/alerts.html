@@ -3,73 +3,123 @@
 <head>
     <title>Admin - Alerts</title>
     <th:block th:replace="~{fragments/style :: style}"></th:block>
+
+    <!-- Icons -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
 </head>
 <body>
 
+<!-- SIDEBAR -->
 <div class="sidebar">
-    <h2>Admin Panel</h2>
-    <a href="/admin/dashboard">Dashboard</a>
-    <a href="/products/admin/products">Products</a>
-    <a href="/alerts/admin">Alerts</a>
-    <a href="/transactions/admin">Transactions</a>
-    <a href="/auth/logout">Logout</a>
+    <h2>🚀 Inventra</h2>
+
+    <a href="/admin/dashboard">
+        <i class="fa fa-home"></i>
+        <span>Dashboard</span>
+    </a>
+
+    <a href="/products/admin/products">
+        <i class="fa fa-box"></i>
+        <span>Products</span>
+    </a>
+
+    <a href="/alerts/admin" class="active">
+        <i class="fa fa-bell"></i>
+        <span>Alerts</span>
+    </a>
+
+    <a href="/transactions/admin">
+        <i class="fa fa-exchange-alt"></i>
+        <span>Transactions</span>
+    </a>
+
+    <a href="/auth/logout">
+        <i class="fa fa-sign-out-alt"></i>
+        <span>Logout</span>
+    </a>
 </div>
 
+<!-- CONTENT -->
 <div class="content">
+
+    <!-- TOPBAR -->
+    <div class="topbar">
+        <h2>🚨 Inventory Alerts</h2>
+        <span style="color:#64748b;">Monitor system alerts</span>
+    </div>
+
+    <!-- ALERT CARD -->
     <div class="card">
-        <!--<h3>Low Stock Alerts</h3>
 
-        <table>
-            <tr>
-                <th>ID</th>
-                <th>Name</th>
-                <th>Stock</th>
-                <th>Min Level</th>
-            </tr>
-
-            <tr th:each="p : ${lowStockProducts}">
-                <td th:text="${p.productId}"></td>
-                <td th:text="${p.name}"></td>
-                <td th:text="${p.stockQuantity}"></td>
-                <td th:text="${p.minStockLevel}"></td>
-            </tr>
-        </table>-->
-        <h3>Inventory Alerts</h3>
+        <!-- EMPTY STATE -->
         <div th:if="${#lists.isEmpty(alerts)}"
-             style="color:gray;margin-bottom:10px;">
-            No alerts available.
+             style="text-align:center; padding:30px; color:#64748b;">
+            <i class="fa fa-check-circle" style="font-size:40px; margin-bottom:10px;"></i>
+            <p>No alerts available 🎉</p>
         </div>
 
-        <table>
+        <!-- TABLE -->
+        <table th:if="${!#lists.isEmpty(alerts)}">
+
+            <thead>
             <tr>
-                <th>Alert ID</th>
-                <th>Product ID</th>
+                <th>ID</th>
+                <th>Product</th>
                 <th>Type</th>
                 <th>Severity</th>
                 <th>Message</th>
                 <th>Status</th>
                 <th>Date</th>
             </tr>
+            </thead>
 
+            <tbody>
             <tr th:each="a : ${alerts}">
-                <td th:text="${a.alertId}"></td>
-                <td th:text="${a.productId}"></td>
-                <td th:text="${a.alertType}"></td>
 
-                <td th:text="${a.severity}"
-                    th:style="${a.severity=='HIGH'} ?
-            'color:red;font-weight:bold' :
-            (${a.severity=='MEDIUM'} ?
-            'color:orange' : 'color:green')">
+                <td th:text="${a.alertId}"></td>
+
+                <td>
+                    <b>#<span th:text="${a.productId}"></span></b>
+                </td>
+
+                <td>
+                    <span class="badge-orange"
+                          th:text="${a.alertType}">
+                    </span>
+                </td>
+
+                <!-- PREMIUM SEVERITY BADGE -->
+                <td>
+                    <span th:if="${a.severity == 'HIGH'}"
+                          class="badge-red">HIGH</span>
+
+                    <span th:if="${a.severity == 'MEDIUM'}"
+                          class="badge-orange">MEDIUM</span>
+
+                    <span th:if="${a.severity == 'LOW'}"
+                          class="badge-green">LOW</span>
                 </td>
 
                 <td th:text="${a.message}"></td>
-                <td th:text="${a.status}"></td>
+
+                <!-- STATUS BADGE -->
+                <td>
+                    <span class="badge-green"
+                          th:if="${a.status == 'RESOLVED'}">Resolved</span>
+
+                    <span class="badge-red"
+                          th:if="${a.status != 'RESOLVED'}">Pending</span>
+                </td>
+
                 <td th:text="${a.createdDate}"></td>
+
             </tr>
+            </tbody>
 
         </table>
+
     </div>
+
 </div>
 
 </body>

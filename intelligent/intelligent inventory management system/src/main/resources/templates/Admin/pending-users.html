@@ -3,46 +3,112 @@
 <head>
     <title>Pending Users</title>
     <th:block th:replace="~{fragments/style :: style}"></th:block>
+
+    <!-- Icons -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
 </head>
 <body>
 
+<!-- SIDEBAR -->
 <div class="sidebar">
-    <h2>Admin Panel</h2>
-    <a href="/admin/dashboard">Dashboard</a>
-    <a href="/admin/pending-users">Pending Users</a>
-    <a href="/admin/logs">Activity Logs</a>
-    <a href="/auth/logout">Logout</a>
+    <h2>🚀 Inventra</h2>
+
+    <a href="/admin/dashboard">
+        <i class="fa fa-home"></i>
+        <span>Dashboard</span>
+    </a>
+
+    <a href="/admin/pending-users" class="active">
+        <i class="fa fa-user-clock"></i>
+        <span>Pending Users</span>
+    </a>
+
+    <a href="/admin/logs">
+        <i class="fa fa-clock"></i>
+        <span>Activity Logs</span>
+    </a>
+
+    <a href="/auth/logout">
+        <i class="fa fa-sign-out-alt"></i>
+        <span>Logout</span>
+    </a>
 </div>
 
+<!-- CONTENT -->
 <div class="content">
-    <div class="card">
-        <h3>Pending Employee Registrations</h3>
 
-        <table>
+    <!-- TOPBAR -->
+    <div class="topbar">
+        <h2>👥 Pending Approvals</h2>
+        <span style="color:#64748b;">Review new employee registrations</span>
+    </div>
+
+    <!-- CARD -->
+    <div class="card">
+
+        <!-- EMPTY STATE -->
+        <div th:if="${#lists.isEmpty(users)}"
+             style="text-align:center; padding:30px; color:#64748b;">
+            <i class="fa fa-check-circle" style="font-size:40px;"></i>
+            <p>All users are approved 🎉</p>
+        </div>
+
+        <!-- TABLE -->
+        <table th:if="${!#lists.isEmpty(users)}">
+
+            <thead>
             <tr>
                 <th>ID</th>
-                <th>Username</th>
+                <th>User</th>
                 <th>Email</th>
                 <th>Action</th>
             </tr>
+            </thead>
 
+            <tbody>
             <tr th:each="user : ${users}">
+
                 <td th:text="${user.id}"></td>
-                <td th:text="${user.username}"></td>
-                <td th:text="${user.email}"></td>
+
                 <td>
-                    <form th:action="@{/admin/approve/{id}(id=${user.id})}" method="post" style="display:inline;">
-                        <button type="submit">Approve</button>
+                    <span class="badge-green"
+                          th:text="${user.username}">
+                    </span>
+                </td>
+
+                <td th:text="${user.email}"></td>
+
+                <td style="display:flex; gap:10px; justify-content:center;">
+
+                    <!-- APPROVE -->
+                    <form th:action="@{/admin/approve/{id}(id=${user.id})}"
+                          method="post">
+                        <button type="submit"
+                                style="background:#16a34a;">
+                            <i class="fa fa-check"></i>
+                            Approve
+                        </button>
                     </form>
 
-                    <form th:action="@{/admin/reject/{id}(id=${user.id})}" method="post" style="display:inline;">
-                        <button type="submit" style="background:#dc2626;">Reject</button>
+                    <!-- REJECT -->
+                    <form th:action="@{/admin/reject/{id}(id=${user.id})}"
+                          method="post">
+                        <button type="submit"
+                                style="background:#dc2626;">
+                            <i class="fa fa-times"></i>
+                            Reject
+                        </button>
                     </form>
+
                 </td>
+
             </tr>
+            </tbody>
 
         </table>
+
     </div>
+
 </div>
 
 </body>

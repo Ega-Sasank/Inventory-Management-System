@@ -3,18 +3,51 @@
 <head>
     <title>Forgot Password</title>
     <th:block th:replace="~{fragments/style :: style}"></th:block>
+
+    <!-- Icons -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
 </head>
-<body style="display:flex;justify-content:center;align-items:center;height:100vh;background:linear-gradient(to right,#ff512f,#dd2476);">
 
-<div class="card" style="width:400px;">
-    <h2 style="text-align:center;">Forgot Password</h2>
+<body style="display:flex;justify-content:center;align-items:center;height:100vh;
+background:linear-gradient(135deg,#667eea,#764ba2);">
 
-    <form th:action="@{/auth/forgot}" method="post">
-        <input type="email" name="email" placeholder="Enter your email" required/>
-        <button type="submit">Send Reset Link</button>
+<div class="card" style="width:380px; text-align:center;">
+
+    <!-- LOGO / TITLE -->
+    <h2 style="margin-bottom:5px;">🔐 Forgot Password</h2>
+    <p style="color:#64748b; font-size:14px; margin-bottom:20px;">
+        Enter your email to receive a reset link
+    </p>
+
+    <!-- FORM -->
+    <form th:action="@{/auth/forgot}" method="post"
+          style="display:flex; flex-direction:column; gap:15px;">
+
+        <input type="email"
+               name="email"
+               placeholder="📧 Enter your email"
+               required/>
+
+        <button type="submit">
+            <i class="fa fa-paper-plane"></i>
+            Send Reset Link
+        </button>
+
     </form>
 
-    <p th:text="${message}" style="text-align:center;color:green;"></p>
+    <!-- MESSAGE -->
+    <p th:if="${message}"
+       th:text="${message}"
+       style="margin-top:15px; color:#16a34a; font-size:14px;">
+    </p>
+
+    <!-- BACK TO LOGIN -->
+    <div style="margin-top:15px;">
+        <a th:href="@{/auth/login}" style="color:#2563eb; font-size:14px;">
+            ← Back to Login
+        </a>
+    </div>
+
 </div>
 
 </body>
